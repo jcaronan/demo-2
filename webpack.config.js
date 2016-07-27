@@ -4,13 +4,15 @@ module.exports = {
     entry: "./src/scripts/index.js",
     output: {
         path: path.join(__dirname, "dist"),
-        filename: "bundle.js"
+        filename: "bundle.js",
+        publicPath: '/static/'
     },
     module: {
         loaders: [
           { test: /\.css/, loader: "style-loader!css-loader"},
           { test: /\.jsx?$/, loader: 'babel-loader',  include: path.join(__dirname, 'src', 'scripts')},
-          {test: /\.(png|woff|woff2|eot|ttf|svg|gif)$/,loaders: ['file-loader']}
+          {test: /\.(png|woff|woff2|eot|ttf|svg|gif)$/,loaders: ['file-loader']},
+          {test: /\.html$/, loaders: ['html-loader']  }
         ]
     },
     plugins: [
